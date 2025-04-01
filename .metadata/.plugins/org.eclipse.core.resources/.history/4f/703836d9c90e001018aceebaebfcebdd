@@ -1,0 +1,28 @@
+/*
+ * operation.h
+ *
+ *  Created on: Apr 1, 2025
+ *      Author: LeeJooHo
+ */
+
+#ifndef INC_OPERATION_H_
+#define INC_OPERATION_H_
+
+#include "button.h"
+#include "led.h"
+
+typedef enum {
+	NODE_SUCCESS,
+	NODE_FAILURE
+} NodeState;
+
+typedef struct _Node Node;
+typedef NodeState (* Tick)(Node*);
+
+struct _Node {
+	Tick tick;
+	Node** children;
+	size_t count;
+};
+
+#endif /* INC_OPERATION_H_ */

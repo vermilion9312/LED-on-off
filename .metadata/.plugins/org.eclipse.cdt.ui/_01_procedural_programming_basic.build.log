@@ -1,0 +1,10 @@
+14:35:45 **** Incremental Build of configuration Debug for project _01_procedural_programming_basic ****
+make -j16 all 
+arm-none-eabi-size  _01_procedural_programming_basic.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5812	     12	   1572	   7396	   1ce4	_01_procedural_programming_basic.elf
+Finished building: default.size.stdout
+ 
+
+14:35:45 Build Finished. 0 errors, 0 warnings. (took 250ms)
+

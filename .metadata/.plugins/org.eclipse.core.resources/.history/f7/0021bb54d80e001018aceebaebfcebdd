@@ -1,0 +1,75 @@
+/*
+ * operation.c
+ *
+ *  Created on: Apr 1, 2025
+ *      Author: LeeJooHo
+ */
+
+
+#include "operation.h"
+
+NodeState run_sequence(void* node) {
+	CompositeNode* n = (CompositeNode*)node;
+	for (size_t i = 0; i < n->child_count; ++i) {
+		Tick tick = ((LeafNode*)n->children[i])->tick;
+		if (tick(n->children[i]) == NODE_FAILURE)
+			return NODE_FAILURE;
+	}
+	return NODE_SUCCESS;
+}
+
+NodeState run_selector(void* node) {
+	CompositeNode* n = (CompositeNode*)node;
+	for (size_t i = 0; i < n->child_count; ++i) {
+		Tick tick = ((LeafNode*)n->children[i])->tick;
+		if (tick(n->children[i]) == NODE_SUCCESS)
+			return NODE_SUCCESS;
+	}
+	return NODE_FAILURE;
+}
+
+
+static LeafNode button_condition  = { is_button_pressed };
+static LeafNode led_off_action    = { turn_off_led      };
+static LeafNode led_on_acttion    = { turn_on_led       };
+
+static void* sequence_children[] = { &button_condition, &led_on_action };
+static CompositeNode sequence = { run_sequence, sequence_children, 2 };
+
+static void* selector_children[] = { &sequence, &led_off_action };
+CompositeNode root = { run_selector, selector_children, 2 };
+
+
+//void* create_leaf(Tick tick) {
+//	LeafNode* node = malloc(sizeof(LeafNode));
+//	node->tick = tick;
+//	return node;
+//}
+//
+//void* create_composite(Tick tick, void** children, size_t child_count) {
+//	CompositeNode* node = malloc(sizeof(CompositeNode));
+//	node->tick = tick;
+//	node->children = children;
+//	node->child_count = child_count;
+//	return node;
+//}
+//
+//CompositeNode* root = NULL;
+//
+//void build_tree(void) {
+//	void* btn_node     = create_leaf(ButtonState);
+//	void* led_on_node  = create_leaf(LED_On);
+//	void* led_off_node = create_leaf(LED_Off);
+//
+//	void** seq_children = malloc(sizeof(void*) * 2);
+//	seq_children[0] = btn_node;
+//	seq_children[1] = led_on_node;
+//	void* seq_node = create_composite(Sequence, seq_children, 2);
+//
+//	void** sel_children = malloc(sizeof(void*) * 2);
+//	sel_children[0] = seq_node;
+//	sel_children[1] = led_off_node;
+//	root = create_composite(Selector, sel_children, 2);
+//}
+
+

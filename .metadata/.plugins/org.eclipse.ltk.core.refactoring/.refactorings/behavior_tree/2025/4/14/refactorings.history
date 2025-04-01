@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;behavior_tree/procedural_programming2.ioc&apos; to &apos;behavior_tree.ioc&apos;" description="Rename resource &apos;procedural_programming2.ioc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="procedural_programming2.ioc" name="behavior_tree.ioc" stamp="1743487852110" updateReferences="true"/>
+</session>

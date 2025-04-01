@@ -1,0 +1,75 @@
+/*
+ * operation.c
+ *
+ *  Created on: Apr 1, 2025
+ *      Author: LeeJooHo
+ */
+
+
+#include "operation.h"
+
+
+NodeState ButtonState(Node* this)
+{
+	if (is_pressed())
+	{
+		return NODE_SUCCESS;
+	}
+
+	return NODE_FAILURE;
+}
+
+NodeState LED_Off(Node* this)
+{
+	turn_off_led();
+	return NODE_SUCCESS;
+}
+
+NodeState LED_On(Node* this)
+{
+	turn_on_led();
+	return NODE_SUCCESS;
+}
+
+NodeState Selector(Node* this)
+{
+	for (size_t i = 0; i < this->child_count; i++)
+	{
+		if (this->children[i]->tick(this->children[i]) == NODE_SUCCESS)
+		{
+			return NODE_SUCCESS;
+		}
+	}
+
+	return NODE_FAILURE;
+}
+
+NodeState Sequence(Node* this)
+{
+	for (size_t i = 0; i < this->child_count; i++)
+	{
+		if (this->children[i]->tick(this->children[i]) == NODE_FAILURE)
+		{
+			return NODE_FAILURE;
+		}
+	}
+
+	return NODE_SUCCESS;
+}
+
+
+Node btn_node     = { ButtonState };
+Node led_on_node  = { LED_On      };
+Node led_off_node = { LED_Off     };
+
+// Sequence: [ButtonState -> LED_On]
+Node* seq_children[] = { &btn_node, &led_on_node };
+Node  sequence_node = { Sequence, seq_children, 2 };
+
+// Selector: [Sequence, LED_Off]
+Node* sel_children[] = { &sequence_node, &led_off_node };
+Node  root = { Selector, sel_children, 2 };
+
+
+
+

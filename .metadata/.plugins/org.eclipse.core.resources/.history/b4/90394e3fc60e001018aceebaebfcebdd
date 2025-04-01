@@ -1,0 +1,61 @@
+/*
+ * operation.c
+ *
+ *  Created on: Apr 1, 2025
+ *      Author: LeeJooHo
+ */
+
+
+#include "operation.h"
+
+
+NodeState ButtonState(Node* this)
+{
+	if (is_pressed())
+	{
+		return NODE_SUCCESS;
+	}
+
+	return NODE_FAILURE;
+}
+
+NodeState LED_Off(Node* this)
+{
+	turn_off_led();
+	return NODE_SUCCESS;
+}
+
+NodeState LED_On(Node* this)
+{
+	turn_on_led();
+	return NODE_SUCCESS;
+}
+
+NodeState Selector(Node* this)
+{
+	for (size_t i = 0; i < child_count; i++)
+	{
+		if (children[i]() == NODE_SUCCESS)
+		{
+			return NODE_SUCCESS;
+		}
+	}
+
+	return NODE_FAILURE;
+}
+
+NodeState Sequence(Node* this)
+{
+	for (size_t i = 0; i < child_count; i++)
+	{
+		if (children[i] == NODE_FAILURE)
+		{
+			return NODE_FAILURE;
+		}
+	}
+
+	return NODE_SUCCESS;
+}
+
+
+Node selector[] = {}

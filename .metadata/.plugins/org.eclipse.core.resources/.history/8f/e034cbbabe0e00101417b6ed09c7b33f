@@ -1,0 +1,13 @@
+/*
+ * button.c
+ *
+ *  Created on: Apr 1, 2025
+ *      Author: LeeJooHo
+ */
+
+
+#include "button.h"
+
+static GPIO_Config button_config = { BUTTON_GPIO_Port, BUTTON_Pin };
+
+

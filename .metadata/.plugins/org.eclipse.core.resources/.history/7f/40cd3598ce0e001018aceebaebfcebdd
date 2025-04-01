@@ -1,0 +1,17 @@
+/*
+ * button.h
+ *
+ *  Created on: Apr 1, 2025
+ *      Author: LeeJooHo
+ */
+
+#ifndef INC_BUTTON_H_
+#define INC_BUTTON_H_
+
+#include <stdbool.h>
+#include "main.h"
+#include "gpio_config.h"
+
+bool is_pressed(void);
+
+#endif /* INC_BUTTON_H_ */
