@@ -172,3 +172,18 @@ java.lang.Exception: The project description file (.project) for 'procedural_pro
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-04-01 15:10:06.642
 !MESSAGE Indexed 'behavior_tree' (22 sources, 149 headers) in 1.81 sec: 11,820 declarations; 38,903 references; 7 unresolved inclusions; 121 syntax errors; 1,136 unresolved names (2.2%)
+!SESSION 2025-04-02 08:28:08.219 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-04-02 08:28:35.658
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-04-02 08:28:35.666
+!MESSAGE Log4j2 initialized with config file C:\Github\LED-on-off\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-04-02 08:28:41.635
+!MESSAGE Started RMI Server, listening on port 41337
