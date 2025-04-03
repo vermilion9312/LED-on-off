@@ -1,0 +1,29 @@
+10:05:45 **** Incremental Build of configuration Debug for project behavior_tree2 ****
+make -j16 all 
+arm-none-eabi-gcc "../User/Src/root.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I../User/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"User/Src/root.d" -MT"User/Src/root.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "User/Src/root.o"
+../User/Src/root.c:43:17: warning: 'right_blue_on_action' defined but not used [-Wunused-variable]
+   43 | static LeafNode right_blue_on_action  = { turn_on_led, &right_blue_config  };
+      |                 ^~~~~~~~~~~~~~~~~~~~
+../User/Src/root.c:42:17: warning: 'right_green_on_action' defined but not used [-Wunused-variable]
+   42 | static LeafNode right_green_on_action = { turn_on_led, &right_green_config };
+      |                 ^~~~~~~~~~~~~~~~~~~~~
+../User/Src/root.c:35:17: warning: 'right_blue_off_action' defined but not used [-Wunused-variable]
+   35 | static LeafNode right_blue_off_action  = { turn_off_led, &right_blue_config  };
+      |                 ^~~~~~~~~~~~~~~~~~~~~
+../User/Src/root.c:34:17: warning: 'right_green_off_action' defined but not used [-Wunused-variable]
+   34 | static LeafNode right_green_off_action = { turn_off_led, &right_green_config };
+      |                 ^~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "behavior_tree2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Github\LED-on-off\behavior_tree2\STM32F407VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="behavior_tree2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: behavior_tree2.elf
+ 
+arm-none-eabi-size  behavior_tree2.elf 
+arm-none-eabi-objdump -h -S behavior_tree2.elf  > "behavior_tree2.list"
+   text	   data	    bss	    dec	    hex	filename
+   6312	    360	   1568	   8240	   2030	behavior_tree2.elf
+Finished building: default.size.stdout
+ 
+Finished building: behavior_tree2.list
+ 
+
+10:05:46 Build Finished. 0 errors, 4 warnings. (took 705ms)
+

@@ -1,0 +1,2 @@
+../User/Src/behavior_tree_config.c:11:11:run_sequence	32	static
+../User/Src/behavior_tree_config.c:23:11:run_selector	32	static
