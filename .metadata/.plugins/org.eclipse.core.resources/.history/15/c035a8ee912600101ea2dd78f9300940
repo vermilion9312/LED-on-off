@@ -1,0 +1,23 @@
+/*
+ * button.c
+ *
+ *  Created on: Apr 1, 2025
+ *      Author: LeeJooHo
+ */
+
+
+#include "button.h"
+
+static bool is_pressed(Button* this)
+{
+	return HAL_GPIO_ReadPin(this->gpio_config->GPIOx, this->gpio_config->GPIO_Pin);
+}
+
+static GPIO_Config button_config = { BUTTON_GPIO_Port, BUTTON_Pin };
+
+static Button button = { &button_config, is_pressed };
+
+Button* get_button(void)
+{
+	return &button;
+}

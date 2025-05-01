@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;OOP_Dynamic_allocation/OOP_Static_allocation.ioc&apos; to &apos;OOP_Dynamic_allocation.ioc&apos;" description="Rename resource &apos;OOP_Static_allocation.ioc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="OOP_Static_allocation.ioc" name="OOP_Dynamic_allocation.ioc" stamp="1746106320926" updateReferences="true"/>
+</session>
